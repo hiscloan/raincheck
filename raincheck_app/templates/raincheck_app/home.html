@@ -1,0 +1,52 @@
+{% extends 'raincheck_app/base.html' %}
+
+{% load static %}
+
+
+
+{% block title %}Home — Raincheck{% endblock %}
+
+{% block content %}
+<section class="hero-section position-relative">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="{% static 'raincheck_app/videos/raincheck-hero2.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="hero-overlay d-flex justify-content-center align-items-center text-center">
+    <div class="container">
+      <h1 class="display-5 text-white">rain check advertising <br></h1>
+      <h2><span class="text-white">Where clever ideas meet sunny results ✨</span></h2>
+      
+    </div>
+  </div>
+</section>
+
+<section class="cta-section py-5">
+  <div class="container">
+    <div class="row g-4" data-aos="fade-up" data-aos-once="true">
+      <div class="col-md-4 d-flex">
+        <div class="card cta-card text-center p-4 w-100">
+          <h4 class="card-title">What We Do</h4>
+          <p class="card-text">Discover how we amplify brands with precision marketing strategies.</p>
+          <a href="{% url 'services' %}" class="btn btn-raincheck">Explore Services</a>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex">
+        <div id="glow-card" class="card cta-card text-center p-4 w-100">
+          <h4 class="card-title">Book a Brainstorm 🌈</h4>
+          <p class="card-text">Let’s chat ideas, vision, and coffee. We’d love to hear what you're building.</p>
+          <a href="{% url 'contact' %}" class="btn btn-raincheck">Reach Out</a>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex">
+        <div class="card cta-card text-center p-4 w-100">
+          <h4 class="card-title">Our Vibe</h4>
+          <p class="card-text">Curious what makes Raincheck tick? Take a peek behind the curtain.</p>
+          <a href="{% url 'about' %}" class="btn btn-raincheck">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

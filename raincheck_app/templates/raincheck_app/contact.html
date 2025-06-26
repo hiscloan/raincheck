@@ -1,0 +1,40 @@
+{% extends 'raincheck_app/base.html' %}
+
+{% block body_class %}contact-page-bg{% endblock %}
+
+{% block title %}Contact Us — Raincheck{% endblock %}
+
+{% block content %}
+
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="contact-card p-4">
+            <h4 class="mb-4 text-center">Get in Touch</h4>
+            <form method="post" novalidate>
+              {% csrf_token %}
+            
+              <div class="mb-3">
+                <label for="id_name" class="form-label h5">Name</label>
+                {{ form.name }}
+              </div>
+          
+              <div class="mb-3">
+                <label for="id_email" class="form-label h5">Email</label>
+                {{ form.email }}
+              </div>
+          
+              <div class="mb-3">
+                <label for="id_message" class="form-label h5">Message</label>
+                {{ form.message }}
+              </div>
+          
+              <div class="text-center mt-4">
+                <button type="submit" class="btn btn-raincheck px-4 h5">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
