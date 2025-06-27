@@ -28,25 +28,18 @@ def contact(request):
                 phone=form.cleaned_data['phone'],
                 message=form.cleaned_data['message']
             )
+            
+            send_mail(
+                subject='New Contact Form Submission',
+                message=f"From: {data['name']} <{data['email']}>\n\n{data['message']}",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=['rainalexiss@gmail.com'],
+                fail_silently=False,
+            )
+
             return redirect('contact')
   # Redirect to clear the form or to a success page
     else:
         form = ContactForm()
 
     return render(request, 'raincheck_app/contact.html', {'form': form})
-
-def contact_view(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        message = request.POST.get('message')
-        email = request.POST.get('email')
-
-        full_message = f"From: {name} <{email}>\n\n{message}"
-
-        send_mail(
-            subject='New Contact Form Submission',
-            message=full_message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['rainalexiss@gmail.com'],
-            fail_silently=False,
-        )
