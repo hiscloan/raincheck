@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 from .models import ContactSubmission
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -32,3 +34,19 @@ def contact(request):
         form = ContactForm()
 
     return render(request, 'raincheck_app/contact.html', {'form': form})
+
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        message = request.POST.get('message')
+        email = request.POST.get('email')
+
+        full_message = f"From: {name} <{email}>\n\n{message}"
+
+        send_mail(
+            subject='New Contact Form Submission',
+            message=full_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=['rainalexiss@gmail.com'],
+            fail_silently=False,
+        )
