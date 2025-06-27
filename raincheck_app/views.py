@@ -33,9 +33,9 @@ def contact(request):
             
             send_mail(
                 subject='New Contact Form Submission',
-                message=f"From: {data['name']} <{data['email']}>\n\n{data['message']}",
+                message=f"From: {data['name']}\n\n {data['email']} \n\n {data['phone']}\n\n{data['message']}",
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=['rainalexiss@gmail.com'],
+                recipient_list=['rainealexiss@gmail.com'],
                 fail_silently=False,
             )
 
