@@ -28,6 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'raincheckadvertising.co.za', 'www.raincheckadvertising.co.za']
+CSRF_TRUSTED_ORIGINS = ['https://raincheckadvertising.co.za', 'https://www.raincheckadvertising.co.za']
 
 
 # Application definition
